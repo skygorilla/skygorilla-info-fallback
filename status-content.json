@@ -2,6 +2,7 @@
   "maintenance": {
     "route": "/hr/maintenance",
     "tone": "planned",
+    "layout": "apple",
     "statusVariant": "maintenance",
     "accentColor": "#f59e0b",
     "affectedSurfaces": {
@@ -13,19 +14,20 @@
     "i18n": {
       "hr": {
         "statusLabel": "ODRŽAVANJE U TIJEKU",
-        "headline": "Skygorilla se ažurira.",
-        "message": "Glavna stranica Skygorilla je u pripremi. Kontakt ostaje dostupan ovdje."
+        "headline": "Vraćamo se uskoro.",
+        "message": "Skygorilla se osvježava. Hvala na strpljenju."
       },
       "en": {
         "statusLabel": "MAINTENANCE IN PROGRESS",
-        "headline": "Skygorilla is being updated.",
-        "message": "The main Skygorilla website is being prepared. Core contact remains available here."
+        "headline": "We'll be back soon.",
+        "message": "Skygorilla is refreshing. Thanks for your patience."
       }
     }
   },
   "deploy": {
     "route": "/hr/deploy",
     "tone": "active",
+    "layout": "cloudflare",
     "statusVariant": "deploy",
     "accentColor": "#3b82f6",
     "affectedSurfaces": {
@@ -50,6 +52,7 @@
   "outage": {
     "route": "/hr/outage",
     "tone": "incident",
+    "layout": "cloudflare",
     "statusVariant": "incident",
     "accentColor": "#ef4444",
     "affectedSurfaces": {
@@ -74,6 +77,7 @@
   "security": {
     "route": "/hr/security",
     "tone": "restricted",
+    "layout": "cloudflare",
     "statusVariant": "security",
     "accentColor": "#f97316",
     "affectedSurfaces": {
@@ -98,6 +102,7 @@
   "comingSoon": {
     "route": "/hr/coming-soon",
     "tone": "planned",
+    "layout": "apple",
     "statusVariant": "operational",
     "accentColor": "#00d4aa",
     "affectedSurfaces": { "hr": [], "en": [] },
@@ -106,19 +111,20 @@
     "i18n": {
       "hr": {
         "statusLabel": "USKORO",
-        "headline": "Nova Skygorilla stranica se priprema.",
-        "message": "Dok cijela stranica nije spremna, ova stranica nosi kontakt i statusne informacije."
+        "headline": "Uskoro smo tu.",
+        "message": "Nova Skygorilla se priprema. Hvala na strpljenju."
       },
       "en": {
         "statusLabel": "LAUNCHING SOON",
-        "headline": "A new Skygorilla site is being prepared.",
-        "message": "Until the full site is ready, this page carries contact and status information."
+        "headline": "We'll be here soon.",
+        "message": "The new Skygorilla is being prepared. Thanks for your patience."
       }
     }
   },
   "contact": {
     "route": "/hr/contact",
     "tone": "neutral",
+    "layout": "cloudflare",
     "statusVariant": "operational",
     "accentColor": "#7c3aed",
     "affectedSurfaces": { "hr": [], "en": [] },
@@ -140,6 +146,7 @@
   "status": {
     "route": "/hr/status",
     "tone": "neutral",
+    "layout": "cloudflare",
     "statusVariant": "operational",
     "accentColor": "#00d4aa",
     "affectedSurfaces": { "hr": [], "en": [] },
@@ -161,6 +168,7 @@
   "404": {
     "route": "/404",
     "tone": "neutral",
+    "layout": "cloudflare",
     "statusVariant": "maintenance",
     "accentColor": "#7c3aed",
     "affectedSurfaces": { "hr": [], "en": [] },
@@ -182,6 +190,7 @@
   "default": {
     "route": "/",
     "tone": "planned",
+    "layout": "cloudflare",
     "statusVariant": "operational",
     "accentColor": "#00d4aa",
     "affectedSurfaces": { "hr": [], "en": [] },
