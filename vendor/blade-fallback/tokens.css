@@ -1,0 +1,74 @@
+/*
+ * vendor/blade-fallback/tokens.css
+ * Classification : APPROVED_VENDOR_STATIC_CSS
+ * Status         : M1-PLACEHOLDER — stubs only, no real Blade tokens yet
+ * Kit version    : 0.1.0  (see manifest.json)
+ * Source         : @skygorilla/blade  (skygorilla-live/packages/blade)
+ * Upgrade packet : BLADE_FALLBACK_SNAPSHOT_VERSIONING_M1
+ *                  → then BLADE_FALLBACK_EXPORTER_M1
+ *
+ * RULE: Do NOT delete this file as drift.
+ *       Do NOT replace with live Blade import.
+ *       CSS here is intentional per docs/CSS_ALLOWLIST.md.
+ *       Removal requires packet INFO_SKYGORILLA_CSS_SNAPSHOT_REPLACEMENT_M1.
+ *
+ * Blade fallback versioning : PLANNED / NOT IMPLEMENTED (M1)
+ * Runtime Blade dependency  : FORBIDDEN
+ * Static Blade snapshot     : REQUIRED FOR M2
+ */
+
+/* ── M1 placeholder design tokens ──────────────────────────────────────────
+   These will be replaced by real Blade token exports from
+   packages/blade-fallback-exporter once BLADE_FALLBACK_EXPORTER_M1 runs.
+   ─────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Color — to be replaced with Blade token export */
+  --bf-color-bg:          #0a0f1e;
+  --bf-color-surface:     rgba(255, 255, 255, 0.04);
+  --bf-color-border:      rgba(255, 255, 255, 0.08);
+  --bf-color-text:        #ffffff;
+  --bf-color-text-muted:  rgba(255, 255, 255, 0.6);
+  --bf-color-primary:     #00d4aa;
+  --bf-color-secondary:   #7c3aed;
+  --bf-color-accent-amber: #f59e0b;
+  --bf-color-accent-blue:  #3b82f6;
+  --bf-color-accent-red:   #ef4444;
+  --bf-color-accent-orange: #f97316;
+
+  /* Spacing — to be replaced with Blade token export */
+  --bf-space-xs:  4px;
+  --bf-space-sm:  8px;
+  --bf-space-md:  16px;
+  --bf-space-lg:  24px;
+  --bf-space-xl:  40px;
+  --bf-space-2xl: 64px;
+
+  /* Typography — to be replaced with Blade token export */
+  --bf-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --bf-font-size-xs:  0.75rem;
+  --bf-font-size-sm:  0.875rem;
+  --bf-font-size-md:  1rem;
+  --bf-font-size-lg:  1.25rem;
+  --bf-font-size-xl:  1.5rem;
+  --bf-font-size-2xl: 2rem;
+  --bf-font-size-3xl: 2.5rem;
+  --bf-font-weight-normal: 400;
+  --bf-font-weight-medium: 500;
+  --bf-font-weight-semibold: 600;
+  --bf-font-weight-bold: 700;
+
+  /* Radius — to be replaced with Blade token export */
+  --bf-radius-sm:   4px;
+  --bf-radius-md:   8px;
+  --bf-radius-lg:   12px;
+  --bf-radius-xl:   16px;
+  --bf-radius-full: 9999px;
+
+  /* Shadows — to be replaced with Blade token export */
+  --bf-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --bf-shadow-glow: 0 0 40px rgba(0, 212, 170, 0.15);
+
+  /* Transitions — to be replaced with Blade token export */
+  --bf-transition-fast:   150ms ease;
+  --bf-transition-normal: 300ms ease;
+}

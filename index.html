@@ -1,176 +1,332 @@
 <!doctype html>
-<html lang="en">
+<html lang="hr" dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="color-scheme" content="dark only" />
-    <meta name="description" content="SkyGorilla information and status page — maintenance, deployment, and service updates." />
-    <title id="page-title">SkyGorilla Info</title>
+    <meta name="description" content="Skygorilla — stranica za informacije i status. Neovisna od glavnog skupa aplikacija." />
+    <title id="page-title">Skygorilla Info</title>
 
-    <!-- Preconnect for performance -->
+    <!-- Google Fonts — Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
+    <!-- Vendor Blade Fallback CSS — static snapshot v0.1.0 — do NOT replace with live import -->
+    <link rel="stylesheet" href="/vendor/blade-fallback/tokens.css" />
+    <link rel="stylesheet" href="/vendor/blade-fallback/components.css" />
+    <link rel="stylesheet" href="/vendor/blade-fallback/fallback.css" />
+
+    <!-- Page styles — extends Blade vendor tokens, no hardcoded overrides -->
     <link rel="stylesheet" href="/styles.css" />
   </head>
-  <body>
-    <!-- Animated background orbs -->
-    <div class="bg-orbs" aria-hidden="true">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
+
+  <body class="bf-shell">
+
+    <!-- Animated background layer (decorative) -->
+    <div class="sg-bg-orbs" aria-hidden="true">
+      <div class="sg-orb sg-orb--1"></div>
+      <div class="sg-orb sg-orb--2"></div>
+      <div class="sg-orb sg-orb--3"></div>
     </div>
+    <div class="sg-bg-grid" aria-hidden="true"></div>
 
-    <!-- Grid pattern overlay -->
-    <div class="bg-grid" aria-hidden="true"></div>
+    <!-- No-script fallback -->
+    <noscript>
+      <div class="bf-noscript" role="alert">
+        JavaScript je onemogućen. Ova stranica zahtijeva JavaScript za prikaz kontekstualnog sadržaja. /
+        JavaScript is disabled. This page requires JavaScript to display contextual content.
+      </div>
+    </noscript>
 
-    <!-- Main page shell -->
-    <main class="page-shell" id="app" role="main">
+    <!-- ═══════════════════════════════════════════════════════════
+         FallbackHeader
+    ═══════════════════════════════════════════════════════════ -->
+    <header class="bf-shell__header sg-header" id="sg-header" role="banner">
+      <div class="sg-header__inner">
 
-      <!-- Header / Logo area -->
-      <header class="site-header" id="site-header">
-        <div class="logo-lockup">
-          <!-- Gorilla SVG icon -->
-          <div class="logo-icon" aria-hidden="true">
-            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="22" cy="22" r="22" fill="url(#logo-grad)" />
-              <!-- Gorilla face silhouette -->
+        <!-- Logo lockup -->
+        <a href="/" class="sg-logo-lockup" aria-label="Skygorilla — povratak na početak / back to home">
+          <div class="sg-logo-icon" aria-hidden="true">
+            <!-- Skygorilla gorilla SVG — inline, no external dep -->
+            <svg width="40" height="40" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+              <circle cx="22" cy="22" r="22" fill="url(#sg-logo-grad)" />
               <ellipse cx="22" cy="24" rx="10" ry="9" fill="#0a0f1e"/>
               <circle cx="22" cy="18" r="7" fill="#0a0f1e"/>
-              <!-- Ears -->
               <ellipse cx="13" cy="19" rx="3.5" ry="4" fill="#0a0f1e"/>
               <ellipse cx="31" cy="19" rx="3.5" ry="4" fill="#0a0f1e"/>
-              <!-- Inner ear detail -->
-              <ellipse cx="13" cy="19" rx="2" ry="2.5" fill="url(#logo-grad)"/>
-              <ellipse cx="31" cy="19" rx="2" ry="2.5" fill="url(#logo-grad)"/>
-              <!-- Face highlight -->
+              <ellipse cx="13" cy="19" rx="2" ry="2.5" fill="url(#sg-logo-grad)"/>
+              <ellipse cx="31" cy="19" rx="2" ry="2.5" fill="url(#sg-logo-grad)"/>
               <ellipse cx="22" cy="22" rx="6" ry="5" fill="#0d1425"/>
-              <!-- Nostrils -->
               <circle cx="20" cy="22" r="1.2" fill="#0a0f1e"/>
               <circle cx="24" cy="22" r="1.2" fill="#0a0f1e"/>
-              <!-- Eyes -->
-              <circle cx="19.5" cy="18" r="1.5" fill="url(#logo-grad)"/>
-              <circle cx="24.5" cy="18" r="1.5" fill="url(#logo-grad)"/>
+              <circle cx="19.5" cy="18" r="1.5" fill="url(#sg-logo-grad)"/>
+              <circle cx="24.5" cy="18" r="1.5" fill="url(#sg-logo-grad)"/>
               <circle cx="19.8" cy="17.7" r="0.6" fill="white"/>
               <circle cx="24.8" cy="17.7" r="0.6" fill="white"/>
-              <!-- Brow ridge -->
-              <path d="M16 16 Q19.5 14 24.5 16" stroke="url(#logo-grad)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M16 16 Q19.5 14 24.5 16" stroke="url(#sg-logo-grad)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
               <defs>
-                <linearGradient id="logo-grad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#00d4aa"/>
-                  <stop offset="100%" stop-color="#7c3aed"/>
+                <linearGradient id="sg-logo-grad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="var(--bf-color-primary)"/>
+                  <stop offset="100%" stop-color="var(--bf-color-secondary)"/>
                 </linearGradient>
               </defs>
             </svg>
           </div>
-          <!-- Wordmark -->
-          <div class="logo-wordmark">
-            <span class="logo-text">Sky<span class="logo-accent">Gorilla</span></span>
-            <span class="logo-tagline">Platform Status</span>
+          <div class="sg-logo-wordmark">
+            <span class="sg-logo-name">Sky<span class="sg-logo-accent">Gorilla</span></span>
+            <span class="sg-logo-sub">info.skygorilla.hr</span>
+          </div>
+        </a>
+
+        <!-- Header right: clock + language switcher -->
+        <div class="sg-header__right">
+          <!-- Live UTC clock -->
+          <div class="sg-clock" id="sg-clock" aria-label="Current UTC time">
+            <span class="sg-clock__dot" aria-hidden="true"></span>
+            <span class="sg-clock__time" id="sg-clock-time">--:--:--</span>
+            <span class="sg-clock__label">UTC</span>
+          </div>
+
+          <!-- Language switcher — HR | EN -->
+          <nav class="sg-lang-switcher" aria-label="Language / Jezik">
+            <a href="#" class="sg-lang-btn sg-lang-btn--hr" id="sg-lang-hr" data-locale="hr" aria-current="true">HR</a>
+            <span class="sg-lang-sep" aria-hidden="true">|</span>
+            <a href="#" class="sg-lang-btn sg-lang-btn--en" id="sg-lang-en" data-locale="en">EN</a>
+          </nav>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Shell body
+    ═══════════════════════════════════════════════════════════ -->
+    <main class="bf-shell__body sg-body" id="sg-main" role="main" aria-live="polite" aria-atomic="false">
+
+      <!-- ── StatusHero ── -->
+      <section class="sg-hero sg-section" id="sg-hero" aria-labelledby="sg-headline">
+
+        <!-- StatusBadge -->
+        <div class="sg-badge-row">
+          <span class="bf-status-banner bf-status-banner--operational sg-status-badge" id="sg-status-badge" role="status">
+            <span class="sg-badge-dot" id="sg-badge-dot" aria-hidden="true"></span>
+            <span class="sg-badge-label" id="sg-badge-label">INFO</span>
+          </span>
+          <time class="sg-updated" id="sg-updated" datetime="">—</time>
+        </div>
+
+        <!-- Context icon -->
+        <div class="sg-hero-icon" id="sg-hero-icon" aria-hidden="true">
+          <!-- SVG injected by JS -->
+        </div>
+
+        <!-- Headline + message -->
+        <h1 class="sg-headline" id="sg-headline">Skygorilla info.</h1>
+        <p class="sg-message" id="sg-message">Ova neovisna stranica nosi kontakt i statusne informacije za Skygorilla umbrella.</p>
+
+        <!-- Progress bar (shown for maintenance / deploy) -->
+        <div class="sg-progress-wrap" id="sg-progress-wrap" hidden aria-hidden="true">
+          <div class="sg-progress-meta">
+            <span class="sg-progress-label" id="sg-progress-label">Napredak</span>
+            <span class="sg-progress-value" id="sg-progress-value">0%</span>
+          </div>
+          <div class="sg-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="sg-progress-track">
+            <div class="sg-progress-fill" id="sg-progress-fill"></div>
           </div>
         </div>
 
-        <!-- Live clock -->
-        <div class="header-time" id="live-clock" aria-label="Current time">
-          <span class="time-dot" aria-hidden="true"></span>
-          <span id="clock-display">--:--:--</span>
-          <span class="time-utc">UTC</span>
+      </section>
+
+      <!-- ── ContextMessageCard ── -->
+      <section class="bf-card sg-context-card sg-section" id="sg-context-card" aria-labelledby="sg-context-card-title">
+        <h2 class="sg-context-card-title" id="sg-context-card-title" hidden>Detalji konteksta</h2>
+
+        <!-- AffectedSurfaceList (shown only when surfaces exist) -->
+        <div class="sg-affected-wrap" id="sg-affected-wrap" hidden>
+          <p class="sg-affected-heading" id="sg-affected-heading">Pogođene površine:</p>
+          <ul class="sg-affected-list" id="sg-affected-list" aria-label="Pogođene površine">
+            <!-- list items injected by JS -->
+          </ul>
         </div>
-      </header>
 
-      <!-- Status card container -->
-      <div class="card-wrapper" id="card-wrapper">
-        <article class="status-card glass-card" id="status-card" aria-live="polite" aria-atomic="true">
-
-          <!-- Status badge row -->
-          <div class="status-badge-row" id="status-badge-row">
-            <div class="status-badge" id="status-badge">
-              <span class="status-dot" id="status-dot" aria-hidden="true"></span>
-              <span class="status-label" id="status-label">OPERATIONAL</span>
-            </div>
-            <time class="last-updated" id="last-updated" datetime="">Updated just now</time>
+        <!-- ContactPanel (shown on contact route) -->
+        <div class="sg-contact-wrap" id="sg-contact-wrap" hidden>
+          <div class="sg-contact-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="7" width="22" height="15" rx="3" stroke="var(--sg-accent-color, #7c3aed)" stroke-width="1.8"/>
+              <path d="M3 10l11 7 11-7" stroke="var(--sg-accent-color, #7c3aed)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
+          <a href="mailto:info@skygorilla.hr" class="sg-contact-email bf-btn bf-btn--primary" id="sg-contact-link">
+            info@skygorilla.hr
+          </a>
+          <p class="sg-contact-note" id="sg-contact-note">Bez obrasca. Bez prijave. / No form. No login.</p>
+        </div>
 
-          <!-- Context icon -->
-          <div class="context-icon-wrap" id="context-icon-wrap" aria-hidden="true">
-            <div class="context-icon" id="context-icon">
-              <!-- SVG injected by JS -->
+        <!-- Status page context links (shown on /status route) -->
+        <div class="sg-status-links-wrap" id="sg-status-links-wrap" hidden>
+          <!-- injected by JS -->
+        </div>
+
+        <!-- 404 back link -->
+        <div class="sg-404-wrap" id="sg-404-wrap" hidden>
+          <a href="/" class="bf-btn bf-btn--ghost sg-back-btn" id="sg-back-home-btn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span id="sg-back-label">Natrag na početak</span>
+          </a>
+        </div>
+
+      </section>
+
+      <!-- ── SystemIndependenceDiagram ── -->
+      <section class="bf-card sg-diagram-card sg-section" id="sg-diagram" aria-labelledby="sg-diagram-title">
+        <h2 class="sg-diagram-title" id="sg-diagram-title">
+          <span class="sg-diagram-title-hr">Arhitektura neovisnosti</span>
+          <span class="sg-diagram-title-en" hidden>Independence Architecture</span>
+        </h2>
+        <p class="sg-diagram-desc" id="sg-diagram-desc">
+          <span class="sg-diagram-desc-hr">Ova stranica je statična i ne ovisi o glavnom aplikacijskom skupu.</span>
+          <span class="sg-diagram-desc-en" hidden>This page is static and does not depend on the main application stack.</span>
+        </p>
+
+        <!-- CSS/SVG block diagram -->
+        <div class="sg-diagram" role="img" aria-label="Dijagram neovisnosti sustava">
+          <!-- Top row: main stack surfaces -->
+          <div class="sg-diagram__row sg-diagram__row--top">
+            <div class="sg-diagram__block sg-diagram__block--surface">
+              <span class="sg-diagram__icon" aria-hidden="true">🌐</span>
+              <span>skygorilla.hr</span>
             </div>
-          </div>
-
-          <!-- Headline & body -->
-          <div class="content-text" id="content-text">
-            <h1 class="status-headline" id="status-headline">SkyGorilla Platform</h1>
-            <p class="status-body" id="status-body">This is the SkyGorilla information and status page. All systems are operational.</p>
-          </div>
-
-          <!-- Progress bar (shown for maintenance/deploy) -->
-          <div class="progress-wrap" id="progress-wrap" hidden>
-            <div class="progress-header">
-              <span class="progress-label" id="progress-label">Progress</span>
-              <span class="progress-value" id="progress-value">0%</span>
+            <div class="sg-diagram__block sg-diagram__block--surface">
+              <span class="sg-diagram__icon" aria-hidden="true">🏗️</span>
+              <span>Nakovan</span>
             </div>
-            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track">
-              <div class="progress-fill" id="progress-fill"></div>
+            <div class="sg-diagram__block sg-diagram__block--surface">
+              <span class="sg-diagram__icon" aria-hidden="true">🔥</span>
+              <span>Firebase</span>
             </div>
-          </div>
-
-          <!-- Email input (coming-soon only) -->
-          <div class="email-wrap" id="email-wrap" hidden>
-            <p class="email-label">Get notified when we launch</p>
-            <form class="email-form" id="notify-form" onsubmit="handleNotifySubmit(event)">
-              <input
-                type="email"
-                id="notify-email"
-                class="email-input"
-                placeholder="your@email.com"
-                autocomplete="email"
-                aria-label="Email address for launch notification"
-              />
-              <button type="submit" class="email-btn" id="notify-submit-btn">
-                Notify Me
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </form>
-            <p class="email-note" id="email-confirmation" aria-live="polite"></p>
-          </div>
-
-          <!-- Divider -->
-          <div class="card-divider" aria-hidden="true"></div>
-
-          <!-- System info row -->
-          <div class="system-info-row" id="system-info-row">
-            <div class="system-metric">
-              <span class="metric-label">Domain</span>
-              <span class="metric-value">info.skygorilla.hr</span>
-            </div>
-            <div class="system-metric">
-              <span class="metric-label">Region</span>
-              <span class="metric-value">EU Central</span>
-            </div>
-            <div class="system-metric">
-              <span class="metric-label">CDN</span>
-              <span class="metric-value">Cloudflare</span>
+            <div class="sg-diagram__block sg-diagram__block--surface">
+              <span class="sg-diagram__icon" aria-hidden="true">📖</span>
+              <span>Storybook</span>
             </div>
           </div>
 
-        </article>
+          <!-- Downward arrows -->
+          <div class="sg-diagram__row sg-diagram__row--arrows" aria-hidden="true">
+            <div class="sg-diagram__arrow-group">
+              <div class="sg-diagram__arrow-line"></div>
+              <div class="sg-diagram__arrow-line"></div>
+              <div class="sg-diagram__arrow-line"></div>
+              <div class="sg-diagram__arrow-line"></div>
+            </div>
+          </div>
+
+          <!-- Warning band -->
+          <div class="sg-diagram__row sg-diagram__row--warning">
+            <div class="sg-diagram__warning-band">
+              <span class="sg-diagram__warning-icon" aria-hidden="true">⚠️</span>
+              <span class="sg-diagram__warning-text-hr">Može biti nedostupno za vrijem održavanja</span>
+              <span class="sg-diagram__warning-text-en" hidden>May be down during maintenance</span>
+            </div>
+          </div>
+
+          <!-- Isolation label -->
+          <div class="sg-diagram__row sg-diagram__row--iso" aria-hidden="true">
+            <div class="sg-diagram__iso-line">
+              <div class="sg-diagram__iso-dashes"></div>
+              <span class="sg-diagram__iso-label">IZOLIRANO / ISOLATED</span>
+              <div class="sg-diagram__iso-dashes"></div>
+            </div>
+          </div>
+
+          <!-- This page -->
+          <div class="sg-diagram__row sg-diagram__row--this">
+            <div class="sg-diagram__block sg-diagram__block--this">
+              <span class="sg-diagram__icon" aria-hidden="true">✅</span>
+              <span>info.skygorilla.hr — <strong>ova stranica</strong> — Static HTML / Cloudflare Pages</span>
+            </div>
+          </div>
+
+          <!-- Upward arrow from vendor -->
+          <div class="sg-diagram__row sg-diagram__row--up-arrow" aria-hidden="true">
+            <div class="sg-diagram__up-arrow">↑</div>
+          </div>
+
+          <!-- Vendor snapshot -->
+          <div class="sg-diagram__row sg-diagram__row--vendor">
+            <div class="sg-diagram__block sg-diagram__block--vendor">
+              <span class="sg-diagram__icon" aria-hidden="true">📦</span>
+              <span>vendor/blade-fallback/ — pinned CSS snapshot v0.1.0 — bez live importa</span>
+            </div>
+          </div>
+
+          <!-- Disclaimer -->
+          <p class="sg-diagram__disclaimer" id="sg-diagram-disclaimer">
+            <span class="sg-diagram-disc-hr">Ova stranica ne tvrdi garantirani uptime. Hostana je na Cloudflare Pages kao statičan HTML.</span>
+            <span class="sg-diagram-disc-en" hidden>This page does not claim guaranteed uptime. It is hosted on Cloudflare Pages as static HTML.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ── MiniMetricCards ── -->
+      <section class="sg-metrics sg-section" id="sg-metrics" aria-label="Tehničke metrike">
+        <div class="bf-metric-card sg-metric" id="sg-metric-independence">
+          <span class="bf-metric-card__label" id="sg-metric-independence-label">Ova stranica</span>
+          <span class="bf-metric-card__value">Neovisna</span>
+        </div>
+        <div class="bf-metric-card sg-metric" id="sg-metric-stack">
+          <span class="bf-metric-card__label" id="sg-metric-stack-label">Stos</span>
+          <span class="bf-metric-card__value">Statični HTML</span>
+        </div>
+        <div class="bf-metric-card sg-metric" id="sg-metric-vendor">
+          <span class="bf-metric-card__label" id="sg-metric-vendor-label">Vendor CSS</span>
+          <span class="bf-metric-card__value">v0.1.0</span>
+        </div>
+        <div class="bf-metric-card sg-metric" id="sg-metric-export">
+          <span class="bf-metric-card__label" id="sg-metric-export-label">Datum izvoza</span>
+          <span class="bf-metric-card__value" id="sg-metric-export-val">2026-06-04</span>
+        </div>
+      </section>
+
+      <!-- ── SafeLinkGrid + ContextSwitcher ── -->
+      <section class="sg-section sg-links-section" id="sg-links-section" aria-label="Navigacija">
+        <h2 class="sg-links-heading" id="sg-links-heading">
+          <span class="sg-links-heading-hr">Kontekst stranice</span>
+          <span class="sg-links-heading-en" hidden>Page contexts</span>
+        </h2>
+        <nav class="sg-context-switcher" id="sg-context-switcher" aria-label="Prebaci kontekst / Switch context">
+          <!-- Links injected by JS -->
+        </nav>
+      </section>
+
+      <!-- ── LastUpdated ── -->
+      <div class="sg-last-updated sg-section" id="sg-last-updated" aria-label="Verzija stranice">
+        <span class="sg-last-updated__label" id="sg-version-label">Verzija stranice:</span>
+        <span class="sg-last-updated__val">blade-fallback v0.1.0 · izvezeno 2026-06-04</span>
       </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="site-footer" role="contentinfo">
-      <span class="footer-domain">info.skygorilla.hr</span>
-      <span class="footer-sep" aria-hidden="true">·</span>
-      <span class="footer-copy">© 2025 SkyGorilla</span>
+    <!-- ═══════════════════════════════════════════════════════════
+         FallbackFooter
+    ═══════════════════════════════════════════════════════════ -->
+    <footer class="bf-shell__footer bf-footer sg-footer" id="sg-footer" role="contentinfo">
+      <div class="sg-footer__inner">
+        <span class="sg-footer__domain">info.skygorilla.hr</span>
+        <span class="sg-footer__sep" aria-hidden="true">·</span>
+        <span class="sg-footer__copy">© 2025 Skygorilla</span>
+        <span class="sg-footer__sep" aria-hidden="true">·</span>
+        <span class="sg-footer__version">v0.1.0</span>
+        <span class="sg-footer__sep" aria-hidden="true">·</span>
+        <a href="/hr/contact" class="sg-footer__contact" id="sg-footer-contact">info@skygorilla.hr</a>
+      </div>
     </footer>
 
-    <!-- Inline JS to prevent flash of unstyled content -->
+    <!-- main.js — context detection, locale, content injection -->
     <script src="/main.js"></script>
   </body>
 </html>

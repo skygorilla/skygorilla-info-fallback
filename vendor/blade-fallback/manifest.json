@@ -2,7 +2,7 @@
   "kit": "blade-fallback",
   "version": "0.1.0",
   "source": "@skygorilla/blade",
-  "sourcePath": "skygorilla-live/packages/blade",
+  "sourcePath": "C:\\Users\\Nero3D\\Desktop\\skygorilla-workspace\\skygorilla-live\\packages\\blade",
   "mode": "static-export",
   "runtimeDependency": false,
   "approvedFor": "info.skygorilla.hr",
@@ -16,6 +16,7 @@
     "metric-card",
     "footer"
   ],
-  "_status": "M1-PLACEHOLDER — CSS files are stubs. Run BLADE_FALLBACK_SNAPSHOT_VERSIONING_M1 then BLADE_FALLBACK_EXPORTER_M1 to replace with real Blade-exported CSS.",
-  "_rule": "Do NOT delete this vendor/ directory. CSS here is intentional per docs/CSS_ALLOWLIST.md. Removal requires packet INFO_SKYGORILLA_CSS_SNAPSHOT_REPLACEMENT_M1."
+  "removalRequiresPacket": "INFO_SKYGORILLA_CSS_SNAPSHOT_REPLACEMENT_M1",
+  "_status": "IMPLEMENTED_AS_STATIC_SNAPSHOT_M1 — CSS stubs committed as pinned vendor snapshot. BLADE_FALLBACK_EXPORTER_M1 will replace stubs with real Blade-exported CSS when Blade matures.",
+  "_rule": "Do NOT delete this vendor/ directory or its CSS as drift. CSS here is intentional per docs/CSS_ALLOWLIST.md. A later agent must not remove this CSS and relink Blade later. This snapshot must survive even if Blade, Nakovan, Storybook, npm workspaces, Firebase, Firestore, or Supabase are broken."
 }

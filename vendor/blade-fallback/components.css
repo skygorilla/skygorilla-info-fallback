@@ -1,0 +1,95 @@
+/*
+ * vendor/blade-fallback/components.css
+ * Classification : APPROVED_VENDOR_STATIC_CSS
+ * Status         : M1-PLACEHOLDER — stubs only, no real Blade components yet
+ * Kit version    : 0.1.0  (see manifest.json)
+ * Source         : @skygorilla/blade  (skygorilla-live/packages/blade)
+ * Upgrade packet : BLADE_FALLBACK_SNAPSHOT_VERSIONING_M1
+ *                  → then BLADE_FALLBACK_EXPORTER_M1
+ *
+ * RULE: Do NOT delete this file as drift.
+ *       Do NOT replace with live Blade import.
+ *       CSS here is intentional per docs/CSS_ALLOWLIST.md.
+ *       Removal requires packet INFO_SKYGORILLA_CSS_SNAPSHOT_REPLACEMENT_M1.
+ *
+ * Blade fallback versioning : PLANNED / NOT IMPLEMENTED (M1)
+ * Runtime Blade dependency  : FORBIDDEN
+ * Static Blade snapshot     : REQUIRED FOR M2
+ *
+ * Contains (per manifest): buttons, cards, status-banner, metric-card, footer
+ */
+
+/* ── M1 placeholder component styles ───────────────────────────────────────
+   These will be replaced by real Blade component CSS exports from
+   packages/blade-fallback-exporter once BLADE_FALLBACK_EXPORTER_M1 runs.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* Button */
+.bf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bf-space-sm);
+  padding: var(--bf-space-sm) var(--bf-space-lg);
+  border-radius: var(--bf-radius-full);
+  font-family: var(--bf-font-family);
+  font-size: var(--bf-font-size-sm);
+  font-weight: var(--bf-font-weight-semibold);
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--bf-transition-fast);
+}
+.bf-btn:hover { opacity: 0.85; }
+.bf-btn--primary  { background: var(--bf-color-primary); color: #0a0f1e; }
+.bf-btn--ghost    { background: transparent; border: 1px solid var(--bf-color-border); color: var(--bf-color-text); }
+
+/* Card */
+.bf-card {
+  background: var(--bf-color-surface);
+  border: 1px solid var(--bf-color-border);
+  border-radius: var(--bf-radius-xl);
+  padding: var(--bf-space-xl);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--bf-shadow-card);
+}
+
+/* Status banner */
+.bf-status-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bf-space-sm);
+  padding: var(--bf-space-xs) var(--bf-space-md);
+  border-radius: var(--bf-radius-full);
+  font-family: var(--bf-font-family);
+  font-size: var(--bf-font-size-xs);
+  font-weight: var(--bf-font-weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.bf-status-banner--operational { background: rgba(0, 212, 170, 0.15); color: var(--bf-color-primary); border: 1px solid rgba(0, 212, 170, 0.3); }
+.bf-status-banner--maintenance  { background: rgba(245, 158, 11, 0.15); color: var(--bf-color-accent-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+.bf-status-banner--incident     { background: rgba(239, 68, 68, 0.15); color: var(--bf-color-accent-red); border: 1px solid rgba(239, 68, 68, 0.3); }
+.bf-status-banner--deploy       { background: rgba(59, 130, 246, 0.15); color: var(--bf-color-accent-blue); border: 1px solid rgba(59, 130, 246, 0.3); }
+.bf-status-banner--security     { background: rgba(249, 115, 22, 0.15); color: var(--bf-color-accent-orange); border: 1px solid rgba(249, 115, 22, 0.3); }
+
+/* Metric card */
+.bf-metric-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bf-space-xs);
+  padding: var(--bf-space-lg);
+  background: var(--bf-color-surface);
+  border: 1px solid var(--bf-color-border);
+  border-radius: var(--bf-radius-lg);
+}
+.bf-metric-card__label { font-size: var(--bf-font-size-xs); color: var(--bf-color-text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.bf-metric-card__value { font-size: var(--bf-font-size-2xl); font-weight: var(--bf-font-weight-bold); color: var(--bf-color-text); }
+
+/* Footer */
+.bf-footer {
+  font-family: var(--bf-font-family);
+  font-size: var(--bf-font-size-xs);
+  color: var(--bf-color-text-muted);
+  text-align: center;
+  padding: var(--bf-space-lg) var(--bf-space-xl);
+  border-top: 1px solid var(--bf-color-border);
+}

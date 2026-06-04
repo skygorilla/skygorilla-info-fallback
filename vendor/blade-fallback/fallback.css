@@ -1,0 +1,85 @@
+/*
+ * vendor/blade-fallback/fallback.css
+ * Classification : APPROVED_VENDOR_STATIC_CSS
+ * Status         : M1-PLACEHOLDER — stubs only, no real Blade output yet
+ * Kit version    : 0.1.0  (see manifest.json)
+ * Source         : @skygorilla/blade  (skygorilla-live/packages/blade)
+ * Upgrade packet : BLADE_FALLBACK_SNAPSHOT_VERSIONING_M1
+ *                  → then BLADE_FALLBACK_EXPORTER_M1
+ *
+ * RULE: Do NOT delete this file as drift.
+ *       Do NOT replace with live Blade import.
+ *       CSS here is intentional per docs/CSS_ALLOWLIST.md.
+ *       Removal requires packet INFO_SKYGORILLA_CSS_SNAPSHOT_REPLACEMENT_M1.
+ *
+ * Blade fallback versioning : PLANNED / NOT IMPLEMENTED (M1)
+ * Runtime Blade dependency  : FORBIDDEN
+ * Static Blade snapshot     : REQUIRED FOR M2
+ *
+ * Purpose: fallback shell layout — page-level structure for info.skygorilla.hr
+ */
+
+/* ── M1 placeholder fallback shell ─────────────────────────────────────────
+   Fallback shell: minimal page layout that works without any JS framework.
+   This is the last-resort render if main.js fails to execute.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* Normalise */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Shell */
+.bf-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bf-color-bg, #0a0f1e);
+  color: var(--bf-color-text, #ffffff);
+  font-family: var(--bf-font-family, system-ui, sans-serif);
+}
+
+/* Shell header */
+.bf-shell__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--bf-space-xl, 40px) var(--bf-space-xl, 40px) 0;
+}
+
+/* Shell body */
+.bf-shell__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--bf-space-xl, 40px);
+  gap: var(--bf-space-xl, 40px);
+}
+
+/* Shell footer */
+.bf-shell__footer {
+  padding: var(--bf-space-lg, 24px) var(--bf-space-xl, 40px);
+  border-top: 1px solid var(--bf-color-border, rgba(255,255,255,0.08));
+  font-size: 0.75rem;
+  color: var(--bf-color-text-muted, rgba(255,255,255,0.6));
+  text-align: center;
+}
+
+/* No-script fallback banner */
+.bf-noscript {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--bf-radius-md, 8px);
+  padding: var(--bf-space-md, 16px) var(--bf-space-lg, 24px);
+  color: #f59e0b;
+  font-size: 0.875rem;
+  text-align: center;
+  max-width: 600px;
+  margin: var(--bf-space-xl, 40px) auto;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .bf-shell__body  { padding: var(--bf-space-lg, 24px); }
+  .bf-shell__header { padding-top: var(--bf-space-lg, 24px); }
+}

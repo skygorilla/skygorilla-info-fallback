@@ -1,78 +1,203 @@
 {
-  "contexts": {
-    "default": {
-      "id": "default",
-      "title": "SkyGorilla Info",
-      "status": "OPERATIONAL",
-      "headline": "SkyGorilla Platform",
-      "body": "This is the SkyGorilla information and status page. All systems are operational.",
-      "accentColor": "#00d4aa",
-      "accentColorName": "teal",
-      "icon": "check",
-      "progress": null,
-      "showEmailInput": false
+  "maintenance": {
+    "route": "/hr/maintenance",
+    "tone": "planned",
+    "statusVariant": "maintenance",
+    "accentColor": "#f59e0b",
+    "affectedSurfaces": {
+      "hr": ["skygorilla.hr", "Nakovan platforma"],
+      "en": ["skygorilla.hr", "Nakovan platform"]
     },
-    "maintenance": {
-      "id": "maintenance",
-      "title": "Scheduled Maintenance",
-      "status": "MAINTENANCE IN PROGRESS",
-      "headline": "We're upgrading our systems",
-      "body": "SkyGorilla is temporarily offline for scheduled maintenance. We'll be back shortly with improvements.",
-      "accentColor": "#f59e0b",
-      "accentColorName": "amber",
-      "icon": "wrench",
-      "progress": 60,
-      "progressLabel": "Estimated completion",
-      "showEmailInput": false
+    "progress": 60,
+    "animated": false,
+    "i18n": {
+      "hr": {
+        "statusLabel": "ODRŽAVANJE U TIJEKU",
+        "headline": "Skygorilla se ažurira.",
+        "message": "Glavna stranica Skygorilla je u pripremi. Kontakt ostaje dostupan ovdje."
+      },
+      "en": {
+        "statusLabel": "MAINTENANCE IN PROGRESS",
+        "headline": "Skygorilla is being updated.",
+        "message": "The main Skygorilla website is being prepared. Core contact remains available here."
+      }
+    }
+  },
+  "deploy": {
+    "route": "/hr/deploy",
+    "tone": "active",
+    "statusVariant": "deploy",
+    "accentColor": "#3b82f6",
+    "affectedSurfaces": {
+      "hr": ["skygorilla.hr"],
+      "en": ["skygorilla.hr"]
     },
-    "deploy": {
-      "id": "deploy",
-      "title": "Deployment in Progress",
-      "status": "DEPLOYING",
-      "headline": "New version launching",
-      "body": "A new version of SkyGorilla is being deployed. This usually takes just a few minutes.",
-      "accentColor": "#3b82f6",
-      "accentColorName": "blue",
-      "icon": "rocket",
-      "progress": -1,
-      "progressLabel": "Deployment in progress",
-      "showEmailInput": false
+    "progress": null,
+    "animated": true,
+    "i18n": {
+      "hr": {
+        "statusLabel": "POSTAVLJANJE",
+        "headline": "Skygorilla površina se postavlja.",
+        "message": "Javna stranica može biti privremeno nedostupna dok se nova verzija provjerava."
+      },
+      "en": {
+        "statusLabel": "DEPLOYING",
+        "headline": "A Skygorilla surface is being deployed.",
+        "message": "The public site may be temporarily unavailable while the new version is verified."
+      }
+    }
+  },
+  "outage": {
+    "route": "/hr/outage",
+    "tone": "incident",
+    "statusVariant": "incident",
+    "accentColor": "#ef4444",
+    "affectedSurfaces": {
+      "hr": ["skygorilla.hr", "info.skygorilla.hr (ova stranica je neovisna)"],
+      "en": ["skygorilla.hr", "info.skygorilla.hr (this page is independent)"]
     },
-    "outage": {
-      "id": "outage",
-      "title": "Service Disruption",
-      "status": "INCIDENT ACTIVE",
-      "headline": "We're experiencing an issue",
-      "body": "Our team is actively investigating and working on a fix. We apologize for the inconvenience.",
-      "accentColor": "#ef4444",
-      "accentColorName": "red",
-      "icon": "warning",
-      "progress": null,
-      "showEmailInput": false
+    "progress": null,
+    "animated": false,
+    "i18n": {
+      "hr": {
+        "statusLabel": "INCIDENT AKTIVAN",
+        "headline": "Skygorilla je privremeno nedostupan.",
+        "message": "Ova stranica je neovisna od glavnog aplikacijskog skupa."
+      },
+      "en": {
+        "statusLabel": "INCIDENT ACTIVE",
+        "headline": "Skygorilla is temporarily unavailable.",
+        "message": "This fallback page is independent from the main application stack."
+      }
+    }
+  },
+  "security": {
+    "route": "/hr/security",
+    "tone": "restricted",
+    "statusVariant": "security",
+    "accentColor": "#f97316",
+    "affectedSurfaces": {
+      "hr": ["skygorilla.hr"],
+      "en": ["skygorilla.hr"]
     },
-    "security": {
-      "id": "security",
-      "title": "Security Notice",
-      "status": "SECURITY REVIEW",
-      "headline": "Precautionary security measures in effect",
-      "body": "Access is temporarily restricted as a precautionary measure. Our security team is reviewing the situation.",
-      "accentColor": "#f97316",
-      "accentColorName": "orange",
-      "icon": "lock",
-      "progress": null,
-      "showEmailInput": false
-    },
-    "coming-soon": {
-      "id": "coming-soon",
-      "title": "Coming Soon",
-      "status": "LAUNCHING SOON",
-      "headline": "Something amazing is coming",
-      "body": "SkyGorilla is preparing to launch. Sign up to be notified when we go live.",
-      "accentColor": "#00d4aa",
-      "accentColorName": "teal",
-      "icon": "sparkle",
-      "progress": null,
-      "showEmailInput": true
+    "progress": null,
+    "animated": false,
+    "i18n": {
+      "hr": {
+        "statusLabel": "PRISTUP PAUZIRAN",
+        "headline": "Pristup glavnoj površini je pauziran.",
+        "message": "Javna površina može biti privremeno onemogućena dok se konfiguracija pregledava."
+      },
+      "en": {
+        "statusLabel": "ACCESS PAUSED",
+        "headline": "Access to the main surface is paused.",
+        "message": "A public surface may be temporarily disabled while configuration is reviewed."
+      }
+    }
+  },
+  "comingSoon": {
+    "route": "/hr/coming-soon",
+    "tone": "planned",
+    "statusVariant": "operational",
+    "accentColor": "#00d4aa",
+    "affectedSurfaces": { "hr": [], "en": [] },
+    "progress": null,
+    "animated": false,
+    "i18n": {
+      "hr": {
+        "statusLabel": "USKORO",
+        "headline": "Nova Skygorilla stranica se priprema.",
+        "message": "Dok cijela stranica nije spremna, ova stranica nosi kontakt i statusne informacije."
+      },
+      "en": {
+        "statusLabel": "LAUNCHING SOON",
+        "headline": "A new Skygorilla site is being prepared.",
+        "message": "Until the full site is ready, this page carries contact and status information."
+      }
+    }
+  },
+  "contact": {
+    "route": "/hr/contact",
+    "tone": "neutral",
+    "statusVariant": "operational",
+    "accentColor": "#7c3aed",
+    "affectedSurfaces": { "hr": [], "en": [] },
+    "progress": null,
+    "animated": false,
+    "i18n": {
+      "hr": {
+        "statusLabel": "KONTAKT",
+        "headline": "Kontaktirajte Skygorilla.",
+        "message": "Koristite adresu e-pošte ispod. Bez obrasca. Bez potrebe za računom."
+      },
+      "en": {
+        "statusLabel": "CONTACT",
+        "headline": "Contact Skygorilla.",
+        "message": "Use the email address below. No form. No account required."
+      }
+    }
+  },
+  "status": {
+    "route": "/hr/status",
+    "tone": "neutral",
+    "statusVariant": "operational",
+    "accentColor": "#00d4aa",
+    "affectedSurfaces": { "hr": [], "en": [] },
+    "progress": null,
+    "animated": false,
+    "i18n": {
+      "hr": {
+        "statusLabel": "PREGLED STATUSA",
+        "headline": "Pregled statusa Skygorilla.",
+        "message": "Ova stranica povezuje sve aktivne kontekste. Ovdje nema podataka o praćenju uživo."
+      },
+      "en": {
+        "statusLabel": "STATUS OVERVIEW",
+        "headline": "Skygorilla status overview.",
+        "message": "This page links to each active context. No live monitoring data is shown here."
+      }
+    }
+  },
+  "404": {
+    "route": "/404",
+    "tone": "neutral",
+    "statusVariant": "maintenance",
+    "accentColor": "#7c3aed",
+    "affectedSurfaces": { "hr": [], "en": [] },
+    "progress": null,
+    "animated": false,
+    "i18n": {
+      "hr": {
+        "statusLabel": "NIJE PRONAĐENO",
+        "headline": "Stranica nije pronađena.",
+        "message": "Ova putanja ne postoji na rezervnoj površini. Vratite se na glavnu stranicu."
+      },
+      "en": {
+        "statusLabel": "NOT FOUND",
+        "headline": "Page not found.",
+        "message": "This route does not exist on the fallback surface. Return to the main fallback page."
+      }
+    }
+  },
+  "default": {
+    "route": "/",
+    "tone": "planned",
+    "statusVariant": "operational",
+    "accentColor": "#00d4aa",
+    "affectedSurfaces": { "hr": [], "en": [] },
+    "progress": null,
+    "animated": false,
+    "i18n": {
+      "hr": {
+        "statusLabel": "INFO",
+        "headline": "Skygorilla info.",
+        "message": "Ova neovisna stranica nosi kontakt i statusne informacije za Skygorilla umbrella."
+      },
+      "en": {
+        "statusLabel": "INFO",
+        "headline": "Skygorilla info.",
+        "message": "This independent page carries contact and status information for the Skygorilla umbrella."
+      }
     }
   }
 }
