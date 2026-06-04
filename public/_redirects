@@ -1,0 +1,5 @@
+/maintenance    /index.html?context=maintenance 200
+/deploy         /index.html?context=deploy 200
+/outage         /index.html?context=outage 200
+/security       /index.html?context=security 200
+/coming-soon    /index.html?context=coming-soon 200

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="color-scheme" content="dark only" />
+    <meta name="description" content="SkyGorilla information and status page — maintenance, deployment, and service updates." />
+    <title id="page-title">SkyGorilla Info</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <!-- Animated background orbs -->
+    <div class="bg-orbs" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Grid pattern overlay -->
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <!-- Main page shell -->
+    <main class="page-shell" id="app" role="main">
+
+      <!-- Header / Logo area -->
+      <header class="site-header" id="site-header">
+        <div class="logo-lockup">
+          <!-- Gorilla SVG icon -->
+          <div class="logo-icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="22" r="22" fill="url(#logo-grad)" />
+              <!-- Gorilla face silhouette -->
+              <ellipse cx="22" cy="24" rx="10" ry="9" fill="#0a0f1e"/>
+              <circle cx="22" cy="18" r="7" fill="#0a0f1e"/>
+              <!-- Ears -->
+              <ellipse cx="13" cy="19" rx="3.5" ry="4" fill="#0a0f1e"/>
+              <ellipse cx="31" cy="19" rx="3.5" ry="4" fill="#0a0f1e"/>
+              <!-- Inner ear detail -->
+              <ellipse cx="13" cy="19" rx="2" ry="2.5" fill="url(#logo-grad)"/>
+              <ellipse cx="31" cy="19" rx="2" ry="2.5" fill="url(#logo-grad)"/>
+              <!-- Face highlight -->
+              <ellipse cx="22" cy="22" rx="6" ry="5" fill="#0d1425"/>
+              <!-- Nostrils -->
+              <circle cx="20" cy="22" r="1.2" fill="#0a0f1e"/>
+              <circle cx="24" cy="22" r="1.2" fill="#0a0f1e"/>
+              <!-- Eyes -->
+              <circle cx="19.5" cy="18" r="1.5" fill="url(#logo-grad)"/>
+              <circle cx="24.5" cy="18" r="1.5" fill="url(#logo-grad)"/>
+              <circle cx="19.8" cy="17.7" r="0.6" fill="white"/>
+              <circle cx="24.8" cy="17.7" r="0.6" fill="white"/>
+              <!-- Brow ridge -->
+              <path d="M16 16 Q19.5 14 24.5 16" stroke="url(#logo-grad)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <defs>
+                <linearGradient id="logo-grad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#00d4aa"/>
+                  <stop offset="100%" stop-color="#7c3aed"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <!-- Wordmark -->
+          <div class="logo-wordmark">
+            <span class="logo-text">Sky<span class="logo-accent">Gorilla</span></span>
+            <span class="logo-tagline">Platform Status</span>
+          </div>
+        </div>
+
+        <!-- Live clock -->
+        <div class="header-time" id="live-clock" aria-label="Current time">
+          <span class="time-dot" aria-hidden="true"></span>
+          <span id="clock-display">--:--:--</span>
+          <span class="time-utc">UTC</span>
+        </div>
+      </header>
+
+      <!-- Status card container -->
+      <div class="card-wrapper" id="card-wrapper">
+        <article class="status-card glass-card" id="status-card" aria-live="polite" aria-atomic="true">
+
+          <!-- Status badge row -->
+          <div class="status-badge-row" id="status-badge-row">
+            <div class="status-badge" id="status-badge">
+              <span class="status-dot" id="status-dot" aria-hidden="true"></span>
+              <span class="status-label" id="status-label">OPERATIONAL</span>
+            </div>
+            <time class="last-updated" id="last-updated" datetime="">Updated just now</time>
+          </div>
+
+          <!-- Context icon -->
+          <div class="context-icon-wrap" id="context-icon-wrap" aria-hidden="true">
+            <div class="context-icon" id="context-icon">
+              <!-- SVG injected by JS -->
+            </div>
+          </div>
+
+          <!-- Headline & body -->
+          <div class="content-text" id="content-text">
+            <h1 class="status-headline" id="status-headline">SkyGorilla Platform</h1>
+            <p class="status-body" id="status-body">This is the SkyGorilla information and status page. All systems are operational.</p>
+          </div>
+
+          <!-- Progress bar (shown for maintenance/deploy) -->
+          <div class="progress-wrap" id="progress-wrap" hidden>
+            <div class="progress-header">
+              <span class="progress-label" id="progress-label">Progress</span>
+              <span class="progress-value" id="progress-value">0%</span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <!-- Email input (coming-soon only) -->
+          <div class="email-wrap" id="email-wrap" hidden>
+            <p class="email-label">Get notified when we launch</p>
+            <form class="email-form" id="notify-form" onsubmit="handleNotifySubmit(event)">
+              <input
+                type="email"
+                id="notify-email"
+                class="email-input"
+                placeholder="your@email.com"
+                autocomplete="email"
+                aria-label="Email address for launch notification"
+              />
+              <button type="submit" class="email-btn" id="notify-submit-btn">
+                Notify Me
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </form>
+            <p class="email-note" id="email-confirmation" aria-live="polite"></p>
+          </div>
+
+          <!-- Divider -->
+          <div class="card-divider" aria-hidden="true"></div>
+
+          <!-- System info row -->
+          <div class="system-info-row" id="system-info-row">
+            <div class="system-metric">
+              <span class="metric-label">Domain</span>
+              <span class="metric-value">info.skygorilla.hr</span>
+            </div>
+            <div class="system-metric">
+              <span class="metric-label">Region</span>
+              <span class="metric-value">EU Central</span>
+            </div>
+            <div class="system-metric">
+              <span class="metric-label">CDN</span>
+              <span class="metric-value">Cloudflare</span>
+            </div>
+          </div>
+
+        </article>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <span class="footer-domain">info.skygorilla.hr</span>
+      <span class="footer-sep" aria-hidden="true">·</span>
+      <span class="footer-copy">© 2025 SkyGorilla</span>
+    </footer>
+
+    <!-- Inline JS to prevent flash of unstyled content -->
+    <script src="/main.js"></script>
+  </body>
+</html>

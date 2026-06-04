@@ -1,0 +1,21 @@
+{
+  "kit": "blade-fallback",
+  "version": "0.1.0",
+  "source": "@skygorilla/blade",
+  "sourcePath": "skygorilla-live/packages/blade",
+  "mode": "static-export",
+  "runtimeDependency": false,
+  "approvedFor": "info.skygorilla.hr",
+  "exportDate": "2026-06-04",
+  "sourceCommit": "UNKNOWN_UNTIL_GIT",
+  "contains": [
+    "tokens",
+    "buttons",
+    "cards",
+    "status-banner",
+    "metric-card",
+    "footer"
+  ],
+  "_status": "M1-PLACEHOLDER — CSS files are stubs. Run BLADE_FALLBACK_SNAPSHOT_VERSIONING_M1 then BLADE_FALLBACK_EXPORTER_M1 to replace with real Blade-exported CSS.",
+  "_rule": "Do NOT delete this vendor/ directory. CSS here is intentional per docs/CSS_ALLOWLIST.md. Removal requires packet INFO_SKYGORILLA_CSS_SNAPSHOT_REPLACEMENT_M1."
+}
