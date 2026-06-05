@@ -70,6 +70,12 @@ body {
   
   /* Gentle floating animation applied via CSS, no need to bake into video */
   animation: float 6s ease-in-out infinite;
+  
+  /* Force hardware acceleration to prevent jitter during video playback */
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .wl-video {
@@ -80,9 +86,9 @@ body {
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
+  0% { transform: translate3d(0, 0px, 0); }
+  50% { transform: translate3d(0, -15px, 0); }
+  100% { transform: translate3d(0, 0px, 0); }
 }
 
 .wl-headline {
