@@ -69,8 +69,8 @@ body {
   height: 30px;
   z-index: 100;
   /* Since it's a dark background and logo is dark in the preview, we might need to invert it if it's dark text */
-  /* Actually, I'll just apply it and see. The image appears to be dark text. I'll add a filter to invert it if the background is dark. */
-  filter: invert(1) brightness(100);
+  /* Make the logo pure white to contrast with the dark navy background */
+  filter: brightness(0) invert(1);
 }
 
 .wl-video-container {
