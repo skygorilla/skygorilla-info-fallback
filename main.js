@@ -141,6 +141,7 @@ function render() {
     // Initial Render
     root.innerHTML = `
       <div class="wl-layout">
+        <img src="/assets/logo.png" alt="SkyGorilla" class="wl-logo" />
         <nav class="wl-lang">
           <a href="${hrPath}" onclick="handleNav(event, '${hrPath}')" class="${hrActive}" id="lang-btn-hr" aria-label="Switch to Croatian">HR</a>
           <span class="wl-lang-sep">|</span>
