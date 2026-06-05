@@ -68,14 +68,8 @@ body {
   margin-bottom: 48px;
   position: relative;
   
-  /* Gentle floating animation applied via CSS, no need to bake into video */
-  animation: float 6s ease-in-out infinite;
-  
-  /* Force hardware acceleration to prevent jitter during video playback */
-  transform: translateZ(0);
-  will-change: transform;
-  backface-visibility: hidden;
-  perspective: 1000px;
+  /* Animation removed to prevent stuttering */
+  /* animation: float 6s ease-in-out infinite; */
 }
 
 .wl-video {
