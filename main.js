@@ -22,7 +22,7 @@ const CONTEXTS = {
     }
   },
   comingSoon: {
-    video: 'coming_soon',
+    video: 'comingSoon',
     routes: { hr: '/hr/uskoro', en: '/en/coming-soon' },
     i18n: {
       hr: { headline: 'Uskoro smo tu.', message: 'Nova platforma se priprema. Hvala na strpljenju.' },
