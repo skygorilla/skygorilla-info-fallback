@@ -15,7 +15,7 @@ const DEFAULT_LOCALE = 'hr';
 const CONTEXTS = {
   maintenance: {
     video: 'maintenance',
-    routes: { hr: '/hr/odrzavanje', en: '/en/maintenance' },
+    routes: { hr: '/hr/odrzavanje', en: '/en/maintenance', hr_alias: '/hr/maintenance' },
     i18n: {
       hr: { headline: 'Vraćamo se uskoro.', message: 'Sustav se osvježava. Hvala na strpljenju.' },
       en: { headline: 'We\'ll be back soon.', message: 'The system is refreshing. Thanks for your patience.' }
@@ -87,7 +87,7 @@ function detectContext(pathStr) {
   
   // Reverse lookup to find the context key based on translated route
   for (const [ctxKey, ctxVal] of Object.entries(CONTEXTS)) {
-    if (ctxVal.routes[locale] === pathStr || ctxVal.routes['hr'] === pathStr || ctxVal.routes['en'] === pathStr) {
+    if (Object.values(ctxVal.routes).includes(pathStr)) {
       key = ctxKey;
       break;
     }
