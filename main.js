@@ -198,4 +198,9 @@ window.addEventListener('popstate', () => {
   }, 300);
 });
 
-window.addEventListener('DOMContentLoaded', render);
+// Safely execute render
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', render);
+} else {
+  render();
+}
