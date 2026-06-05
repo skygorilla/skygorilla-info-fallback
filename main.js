@@ -75,7 +75,7 @@ function detectContext(pathStr) {
   let locale = DEFAULT_LOCALE;
   let key = 'default';
   
-  if (!pathStr) pathStr = window.location.pathname;
+  if (!pathStr) pathStr = window.__pathOnLoad || window.location.pathname;
   
   if (!pathStr.startsWith('/')) pathStr = '/' + pathStr;
   if (pathStr.endsWith('/') && pathStr.length > 1) pathStr = pathStr.slice(0, -1);
