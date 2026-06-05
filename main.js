@@ -73,7 +73,7 @@ const CONTEXTS = {
 
 function detectContext(pathStr) {
   let locale = DEFAULT_LOCALE;
-  let key = 'default';
+  let key = 'maintenance';
   
   if (!pathStr) pathStr = window.__pathOnLoad || window.location.pathname;
   

@@ -1,3 +1,6 @@
+# Root redirect
+/                     /hr/odrzavanje 302
+
 # Locale-prefixed routes
 /hr                   /index.html    200
 /en                   /index.html    200
