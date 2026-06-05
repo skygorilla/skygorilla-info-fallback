@@ -203,9 +203,21 @@ window.addEventListener('popstate', () => {
   }, 300);
 });
 
-// Safely execute render
-if (document.readyState === 'loading') {
-  window.addEventListener('DOMContentLoaded', render);
-} else {
-  render();
+// Bulletproof render init — handles Rocket Loader, async injection, and deferred scripts
+function safeRender() {
+  var root = document.getElementById('app-root');
+  if (root && !root.querySelector('.wl-layout')) {
+    try { render(); } catch(e) { console.error('[SkyGorilla] Render error:', e); }
+  }
 }
+
+// Attempt 1: run immediately if DOM is ready
+if (document.readyState !== 'loading') {
+  safeRender();
+} else {
+  document.addEventListener('DOMContentLoaded', safeRender);
+}
+// Attempt 2: 300ms safety net (catches Rocket Loader / async injection delay)
+setTimeout(safeRender, 300);
+// Attempt 3: 1s final fallback
+setTimeout(safeRender, 1000);
