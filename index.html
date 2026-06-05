@@ -30,7 +30,25 @@
       </div>
     </noscript>
 
-    <div id="app-root"></div>
+    <div id="app-root">
+      <!-- PRE-RENDERED: maintenance context — JS will take over and replace this if it loads -->
+      <div class="wl-layout">
+        <nav class="wl-lang">
+          <a href="/hr/odrzavanje" id="lang-btn-hr" class="active" aria-label="Switch to Croatian">HR</a>
+          <span class="wl-lang-sep">|</span>
+          <a href="/en/maintenance" id="lang-btn-en" aria-label="Switch to English">EN</a>
+        </nav>
+        <div class="wl-video-container">
+          <video class="wl-video" id="wl-video" autoplay loop muted playsinline>
+            <source src="/assets/maintenance.webm" type="video/webm">
+          </video>
+        </div>
+        <div id="text-container" class="wl-text-container">
+          <h1 class="wl-headline" id="wl-headline">Vraćamo se uskoro.</h1>
+          <p class="wl-message" id="wl-message">Sustav se osvježava. Hvala na strpljenju.</p>
+        </div>
+      </div>
+    </div>
 
     <script data-cfasync="false" src="/main.js"></script>
   </body>
