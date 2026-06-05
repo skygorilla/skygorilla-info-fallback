@@ -93,6 +93,11 @@ function detectContext(pathStr) {
     }
   }
 
+  // If path is just the root or just a locale (e.g. /, /hr, /en), default to maintenance
+  if (pathStr === '/' || pathStr === '/hr' || pathStr === '/en') {
+    key = 'maintenance';
+  }
+
   return { locale, key, ctx: CONTEXTS[key] };
 }
 
