@@ -75,7 +75,7 @@ function detectContext(pathStr) {
   let locale = DEFAULT_LOCALE;
   let key = 'maintenance';
   
-  if (!pathStr) pathStr = window.__pathOnLoad || window.location.pathname;
+  if (!pathStr) pathStr = window.location.pathname;
   
   if (!pathStr.startsWith('/')) pathStr = '/' + pathStr;
   if (pathStr.endsWith('/') && pathStr.length > 1) pathStr = pathStr.slice(0, -1);
@@ -101,7 +101,7 @@ function detectContext(pathStr) {
   return { locale, key, ctx: CONTEXTS[key] };
 }
 
-window.handleNav = function(e, url) {
+function handleNav(e, url) {
   e.preventDefault();
   
   const textContainer = document.getElementById('text-container');
@@ -121,7 +121,7 @@ window.handleNav = function(e, url) {
       if (navContainer) navContainer.classList.remove('fading');
     }, 50);
   }, 300); // Matches CSS transition duration
-};
+}
 
 function render() {
   const { locale, ctx } = detectContext();
@@ -143,9 +143,9 @@ function render() {
       <div class="wl-layout">
         <img src="/assets/logo.png" alt="SkyGorilla" class="wl-logo" />
         <nav class="wl-lang">
-          <a href="${hrPath}" onclick="handleNav(event, '${hrPath}')" class="${hrActive}" id="lang-btn-hr" aria-label="Switch to Croatian">HR</a>
+          <a href="${hrPath}" class="${hrActive}" id="lang-btn-hr" aria-label="Switch to Croatian">HR</a>
           <span class="wl-lang-sep">|</span>
-          <a href="${enPath}" onclick="handleNav(event, '${enPath}')" class="${enActive}" id="lang-btn-en" aria-label="Switch to English">EN</a>
+          <a href="${enPath}" class="${enActive}" id="lang-btn-en" aria-label="Switch to English">EN</a>
         </nav>
         <div class="wl-video-container">
           <video class="wl-video" id="wl-video" autoplay loop muted playsinline>
@@ -164,11 +164,9 @@ function render() {
     const btnEn = document.getElementById('lang-btn-en');
     
     btnHr.href = hrPath;
-    btnHr.setAttribute('onclick', `handleNav(event, '${hrPath}')`);
     btnHr.className = hrActive;
     
     btnEn.href = enPath;
-    btnEn.setAttribute('onclick', `handleNav(event, '${enPath}')`);
     btnEn.className = enActive;
     
     document.getElementById('wl-headline').textContent = t.headline;
@@ -204,11 +202,23 @@ window.addEventListener('popstate', () => {
   }, 300);
 });
 
-// Bulletproof render init — handles Rocket Loader, async injection, and deferred scripts
+// Bind once, including when the static fallback layout is already in the HTML.
+let initialized = false;
 function safeRender() {
-  var root = document.getElementById('app-root');
-  if (root && !root.querySelector('.wl-layout')) {
-    try { render(); } catch(e) { console.error('[SkyGorilla] Render error:', e); }
+  const root = document.getElementById('app-root');
+  if (!root || initialized) return;
+
+  try {
+    render();
+    root.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button !== 0 ||
+          event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = event.target.closest?.('.wl-lang a');
+      if (link && root.contains(link)) handleNav(event, link.getAttribute('href'));
+    });
+    initialized = true;
+  } catch (error) {
+    console.error('[SkyGorilla] Render error:', error);
   }
 }
 
