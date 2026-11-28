@@ -61,6 +61,14 @@ const CONTEXTS = {
       en: { headline: 'Need help?', message: 'Reach out to us directly.' }
     }
   },
+  status: {
+    video: 'default',
+    routes: { hr: '/hr/status', en: '/en/status' },
+    i18n: {
+      hr: { headline: 'Pregled statusa Skygorilla.', message: 'Ovdje nema podataka o praćenju uživo.' },
+      en: { headline: 'Skygorilla status overview.', message: 'No live monitoring data is shown here.' }
+    }
+  },
   default: {
     video: 'default',
     routes: { hr: '/hr/404', en: '/en/404' },
@@ -71,33 +79,30 @@ const CONTEXTS = {
   }
 };
 
-function detectContext(pathStr) {
+// Retain the translated navigation paths and accept every existing bare and
+// locale-prefixed hosting route. The requested path selects informational
+// copy only; it is not proof of an actual incident or deployment.
+const CONTEXT_ALIASES = Object.freeze({
+  maintenance: 'maintenance', odrzavanje: 'maintenance',
+  deploy: 'deploy', azuriranje: 'deploy',
+  outage: 'outage', incident: 'outage',
+  security: 'security', sigurnost: 'security',
+  'coming-soon': 'comingSoon', uskoro: 'comingSoon',
+  contact: 'contact', kontakt: 'contact',
+  status: 'status', '404': 'default'
+});
+
+function detectContext(pathStr = window.location.pathname) {
   let locale = DEFAULT_LOCALE;
-  let key = 'maintenance';
-  
-  if (!pathStr) pathStr = window.location.pathname;
-  
+  if (typeof pathStr !== 'string') return { locale, key: 'default', ctx: CONTEXTS.default };
   if (!pathStr.startsWith('/')) pathStr = '/' + pathStr;
+  // Strip a single trailing slash only; malformed nested paths remain unknown.
   if (pathStr.endsWith('/') && pathStr.length > 1) pathStr = pathStr.slice(0, -1);
-  
-  const pathParts = pathStr.split('/').filter(Boolean);
-  if (LOCALES.includes(pathParts[0])) {
-    locale = pathParts[0];
-  }
-  
-  // Reverse lookup to find the context key based on translated route
-  for (const [ctxKey, ctxVal] of Object.entries(CONTEXTS)) {
-    if (Object.values(ctxVal.routes).includes(pathStr)) {
-      key = ctxKey;
-      break;
-    }
-  }
-
-  // If path is just the root or just a locale (e.g. /, /hr, /en), default to maintenance
-  if (pathStr === '/' || pathStr === '/hr' || pathStr === '/en') {
-    key = 'maintenance';
-  }
-
+  const parts = pathStr === '/' ? [] : pathStr.slice(1).split('/');
+  if (LOCALES.includes(parts[0])) locale = parts.shift();
+  const key = parts.length === 0 ? 'maintenance' :
+    parts.length === 1 && Object.hasOwn(CONTEXT_ALIASES, parts[0])
+      ? CONTEXT_ALIASES[parts[0]] : 'default';
   return { locale, key, ctx: CONTEXTS[key] };
 }
 
